@@ -36,10 +36,10 @@ def home():
     if request.method == "GET":
         return render_template("home.html", display="none")
     elif request.method == "POST":
-        url_to_shorten = request.form["url_to_squash"]
+        url_to_shorten = request.form["url_to_shorten"]
         existing_shorten_url = Urls.query.filter_by(big_url=url_to_shorten).first()
         if existing_shorten_url:
-            return render_template("home.html", url=existing_shorten_url.small_url)
+            return render_template("home.html", url=f"http://localhost:5000/{existing_shorten_url.small_url}")
         else:
             random_url = get_random_url()
             new_shorten_url = Urls(url_to_shorten, random_url)
