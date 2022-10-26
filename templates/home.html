@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
     <title>Five Foot URLs</title>
 </head>
-<body>
+<body onload="hideResult()">
     <h1>Five Foot URLs </h1>
 <form action="/" method="POST">
     <div id="form-div">
@@ -17,13 +17,30 @@
         <input id="submit" type="submit" value="Shorten">
     </div>
 </form>
-<div id="result-div">
-    <p> Your shortened URL: </p>
-    <p id="result">{{ url }}</p>
-    <button onclick="myFunction()">Copy url</button>
+<div id="hide-it">
+
+    <div id="result-div" >
+        <p> Your shortened URL: </p>
+        <p id="result">{{ url }}</p>
+        <button onclick="myFunction()">Copy url</button>
+    </div>
 </div>
 </body>
 <script>
+  result = document.querySelector('#result')
+  resultDiv = document.querySelector('#hide-it')
+  function hideResult(){
+
+      console.log('checking')
+      if(!result.textContent){
+          resultDiv.hidden = true
+      } else {
+          resultDiv.hidden = false
+      }
+  }
+  
+  
+
   function myFunction() {
   // Get the text field
     var copyText = document.getElementById("result");
