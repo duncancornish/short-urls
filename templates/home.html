@@ -14,13 +14,13 @@
 
         <label for="url_to_shorten">Please enter your url to be shortened:</label>
         <input id="url_to_shorten" type="text" name="url_to_shorten" placeholder="Shorten your url here!">
-        <input type="submit" value="Shorten">
+        <input id="submit" type="submit" value="Shorten">
     </div>
 </form>
-<div>
+<div id="result-div">
     <p> Your shortened URL: </p>
     <p id="result">{{ url }}</p>
-    <button onclick="myFunction()">Copy text</button>
+    <button onclick="myFunction()">Copy url</button>
 </div>
 </body>
 <script>

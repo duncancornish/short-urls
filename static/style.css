@@ -29,7 +29,7 @@ h1{
 }
 
 
-form,p{
+form{
     margin:20px;
     padding: 10px;
     border: 5px solid var(--border);
@@ -54,3 +54,43 @@ label{
 p{
     font-size: 30px;
 }
+
+#result-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:20px;
+    padding: 10px;
+    border: 5px solid var(--border);
+    border-radius: 10px;
+
+}
+
+button, #submit{
+    padding: 5px;
+    background: transparent;
+    color: var(--text);
+    border: 5px solid var(--border);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button:hover{
+    background-color: var(--text);
+    color:var(--background);
+    cursor: pointer;
+}
+#submit:hover{
+    background-color: var(--text);
+    color:var(--background);
+    cursor: pointer;
+}
+
+#url_to_shorten{
+    background:transparent;
+    border: none;
+    border-bottom: 5px solid var(--border);
+    color: var(--text);
+}
+
