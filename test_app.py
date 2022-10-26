@@ -13,7 +13,7 @@ def test_no_url(api):
 
 def test_takes_url(api):
     """/POST creates the url"""
-    form_data = {'url_to_squash': 'https://www.google.co.uk/'}
+    form_data = {'url_to_shorten': 'https://www.google.co.uk/'}
     resp = api.post('/', data=form_data)
-    assert resp.status == '200 OK'
-    # assert b'localhost' in resp.data
+    assert resp.status == '201 CREATED'
+    assert b'localhost' in resp.data
