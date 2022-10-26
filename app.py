@@ -53,7 +53,7 @@ def go_to_page(small_url):
     if stored_urls:
         return redirect(stored_urls.big_url)
     else:
-        return f"Url doesn`t exist", 404
+        return redirect('http://localhost:5000/'), 404
 
 if __name__ == "__main__":
     app.run(debug=True)
