@@ -36,14 +36,14 @@ def home():
     if request.method == "GET":
         return render_template("home.html", display="none")
     elif request.method == "POST":
-        url_to_squash = request.form["url_to_squash"]
-        existing_squashed_url = Urls.query.filter_by(big_url=url_to_squash).first()
-        if existing_squashed_url:
-            return render_template("home.html", url=existing_squashed_url.small_url), 201
+        url_to_shorten = request.form["url_to_shorten"]
+        existing_shorten_url = Urls.query.filter_by(big_url=url_to_shorten).first()
+        if existing_shorten_url:
+            return render_template("home.html", url=f"http://localhost:5000/{existing_shorten_url.small_url}")
         else:
             random_url = get_random_url()
-            new_squashed_url = Urls(url_to_squash, random_url)
-            db.session.add(new_squashed_url)
+            new_shorten_url = Urls(url_to_shorten, random_url)
+            db.session.add(new_shorten_url)
             db.session.commit()
             return render_template("home.html", url=f"http://localhost:5000/{random_url}"), 200
 

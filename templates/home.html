@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
     <title>Five Foot URLs</title>
 </head>
 <body>
     <h1>Five Foot URLs </h1>
 <form action="/" method="POST">
-    <label style="display: none;" for="url_to_squash">Type your url</label>
-    <input id="url_to_squash" type="text" name="url_to_squash" placeholder="Squash your url here!">
-    <input type="submit" value="SqUaSh">
+    <div id="form-div">
+
+        <label for="url_to_shorten">Please enter your url to be shortened:</label>
+        <input id="url_to_shorten" type="text" name="url_to_shorten" placeholder="Shorten your url here!">
+        <input type="submit" value="Shorten">
+    </div>
 </form>
+<div>
+    <p> Your shortened URL: </p>
+    <p id="result">{{ url }}</p>
+    <button onclick="myFunction()">Copy text</button>
+</div>
 </body>
+<script>
+  function myFunction() {
+  // Get the text field
+    var copyText = document.getElementById("result");
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.textContent);
+
+    // Alert the copied text
+    alert("Copied the text: " + copyText.textContent);
+ }
+</script>
 </html>
