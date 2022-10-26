@@ -39,13 +39,13 @@ def home():
         url_to_squash = request.form["url_to_squash"]
         existing_squashed_url = Urls.query.filter_by(big_url=url_to_squash).first()
         if existing_squashed_url:
-            return render_template("home.html", url=existing_squashed_url.small_url)
+            return render_template("home.html", url=existing_squashed_url.small_url), 201
         else:
             random_url = get_random_url()
             new_squashed_url = Urls(url_to_squash, random_url)
             db.session.add(new_squashed_url)
             db.session.commit()
-            return render_template("home.html", url=f"http://localhost:5000/{random_url}") 
+            return render_template("home.html", url=f"http://localhost:5000/{random_url}"), 200
 
 @app.route("/<small_url>")
 def go_to_page(small_url):
@@ -53,7 +53,7 @@ def go_to_page(small_url):
     if stored_urls:
         return redirect(stored_urls.big_url)
     else:
-        return f"Url doesn`t exist"
+        return f"Url doesn`t exist", 404
 
 if __name__ == "__main__":
     app.run(debug=True)
